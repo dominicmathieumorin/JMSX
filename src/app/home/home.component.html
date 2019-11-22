@@ -1,0 +1,99 @@
+<div fxLayout="row" class="background">
+  <mat-card style="margin: 30px; height: 300px; width: 100%">
+    <mat-card-title>
+      My Portfolio
+      <span fxFlex></span>
+      <mat-icon>show_chart</mat-icon>
+    </mat-card-title>
+    
+    <table mat-table [dataSource]="userTableData" style="width: 100%">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button>
+            <mat-icon *ngIf="element.qty >= 0" style="color: green">arrow_upward</mat-icon>
+            <mat-icon *ngIf="element.qty < 0" style="color: red">arrow_downward</mat-icon>
+          </button>
+          <a [href]="getHref(element)">{{element.name}}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element"> {{element.qty | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="avg">
+        <th mat-header-cell *matHeaderCellDef>Average</th>
+        <td mat-cell *matCellDef="let element"> {{element.average_cost | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unrealized">
+        <th mat-header-cell *matHeaderCellDef>Unrealized</th>
+        <td mat-cell *matCellDef="let element"> {{element.unrealized_value | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="realized">
+        <th mat-header-cell *matHeaderCellDef>Realized</th>
+        <td mat-cell *matCellDef="let element"> {{element.realized_value | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element"> {{element.total_value | currency}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+
+  <mat-card style="margin: 30px; height: 300px; width: 100%">
+    <mat-card-title>
+      Team Portfolio
+      <span fxFlex></span>
+      <mat-icon>show_chart</mat-icon>
+    </mat-card-title>
+    
+    <table mat-table [dataSource]="teamTableData" style="width: 100%">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button>
+            <mat-icon *ngIf="element.qty >= 0" style="color: green">arrow_upward</mat-icon>
+            <mat-icon *ngIf="element.qty < 0" style="color: red">arrow_downward</mat-icon>
+          </button>
+          <a [href]="getHref(element)">{{element.name}}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element"> {{element.qty | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="avg">
+        <th mat-header-cell *matHeaderCellDef>Average</th>
+        <td mat-cell *matCellDef="let element"> {{element.average_cost | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unrealized">
+        <th mat-header-cell *matHeaderCellDef>Unrealized</th>
+        <td mat-cell *matCellDef="let element"> {{element.unrealized_value | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="realized">
+        <th mat-header-cell *matHeaderCellDef>Realized</th>
+        <td mat-cell *matCellDef="let element"> {{element.realized_value | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element"> {{element.total_value | currency}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>

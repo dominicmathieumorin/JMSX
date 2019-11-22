@@ -1,0 +1,24 @@
+<div class="background">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-card class="login-box">
+      <mat-card-title>JMSB Stock Exchange</mat-card-title>
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username" required>
+          <mat-error *ngIf="usernameError">{{usernameError}}</mat-error>
+        </mat-form-field>
+      
+        <mat-form-field >
+          <input matInput [type]="passwordInputType" placeholder="Password" formControlName="password" required>
+          <button mat-button matSuffix (mousedown)="showPassword()" (mouseup)="hidePassword()" (mouseout)="hidePassword()">
+            <mat-icon *ngIf="passwordInputType == 'password'">visibility</mat-icon>
+            <mat-icon *ngIf="passwordInputType == 'text'">visibility_off</mat-icon>
+          </button>
+          <mat-error *ngIf="passwordError">{{passwordError}}</mat-error>
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary" (click)="login()" [disabled]="!loginForm.valid">
+          Login
+        </button>
+    </mat-card>
+  </form>
+</div>
